@@ -80,7 +80,7 @@ class UserController {
     async add(farm){
 		try{
 			let response = await userSchema.create(farm);
-			return { status: "success",   msg:"User Added successfully", result: response, message: "Added Successfully" };
+			return { status: "success",   msg:"Category Added successfully", result: response, message: "Added Successfully" };
 		} catch(error){
 			return {
 				status: "error",
@@ -105,20 +105,7 @@ class UserController {
 		}
 	}
 
-	async fetchdata(id){
-		try{
-			let response = await userSchema.find({'_id':id});
-			return {
-				response: response,
-			};
-			
-		} catch(error){
-			return {
-				status: "error",
-				error: errorHandler.parseMongoError(error)
-			};
-		}
-	}
+
 
 	async delete(id){
 		try{
