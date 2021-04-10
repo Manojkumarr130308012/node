@@ -105,7 +105,20 @@ class UserController {
 		}
 	}
 
-
+	async fetchdata(id){
+		try{
+			let response = await userSchema.find({'_id':id});
+			return {
+				response: response,
+			};
+			
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
 
 	async delete(id){
 		try{
