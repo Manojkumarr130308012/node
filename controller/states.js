@@ -1,6 +1,6 @@
 const statesSchema = require('./../model/states');
 const errorHandler = require('./../utils/error.handler');
-
+const stateJson = require('./../data/states');
 
 class statesController {
 
@@ -16,7 +16,7 @@ class statesController {
 			};
 		}
 	}
-    async addMany(stateJson){
+    async addMany(){
 		try{
 			let response = await statesSchema.insertMany(stateJson);
 			return { status: "success",   msg:"State Added successfully", result: response, message: "Added Successfully" };
