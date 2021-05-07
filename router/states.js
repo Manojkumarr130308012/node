@@ -8,7 +8,7 @@ router.post('/add', async (req, res) => {
 	res.send(response);
 })
 router.post('/addmany', async (req, res) => {
-	const response = await statesController.addMany();
+	const response = await statesController.addMany(req.body);
 	res.send(response);
 })
 router.get('/', async (req, res) => {

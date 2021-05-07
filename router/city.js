@@ -1,24 +1,13 @@
 const router = require('express').Router();
 const cityController = require('./../controller/city');
 
-router.post('/register', async (req, res) => {
-    res.send(await cityController.register(req.body));
-});
-
-router.post('/login', async (req, res) => {
-    res.send(await cityController.login(req.body));
-});
-
-router.get('/login1', async (req, res) => {
-    res.send(await cityController.login1(req.query.username,req.query.password));
-});
 
 router.post('/add', async (req, res) => {
 	const response = await cityController.add(req.body);
 	res.send(response);
 })
 router.post('/addmany', async (req, res) => {
-	const response = await cityController.addMany();
+	const response = await cityController.addMany(req.body);
 	res.send(response);
 })
 router.get('/', async (req, res) => {

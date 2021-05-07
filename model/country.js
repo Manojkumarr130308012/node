@@ -9,13 +9,7 @@ const countrySchema = new mongoose.Schema({
   },
   name: {
     type: String
-  },
-  states: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'State'
-    }
-  ]
+  }
 });
 
 module.exports = new mongoose.model('Country', countrySchema);

@@ -1,5 +1,4 @@
 const countrySchema = require('./../model/country');
-const countryJson = require('./../data/countries');
 const errorHandler = require('./../utils/error.handler');
 
 
@@ -17,7 +16,7 @@ class CountryController {
 			};
 		}
 	}
-	async addMany(){
+	async addMany(countryJson){
 		try{
 			let response = await countrySchema.insertMany(countryJson);
 			return { status: "success",   msg:"countrys Added successfully", result: response, message: "Added Successfully" };
