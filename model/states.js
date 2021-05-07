@@ -8,8 +8,7 @@ const stateSchema = new mongoose.Schema({
         type: String
       },
       country_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'Country'
+        type: String
       }
 });
 
