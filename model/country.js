@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const countrySchema = new mongoose.Schema({
     _id: {
-    type: Number
+    type: String
   },
   sortname: {
     type: String
