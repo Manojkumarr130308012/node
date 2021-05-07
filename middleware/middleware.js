@@ -11,7 +11,9 @@ server.use(cors());
 //locationdata
 
 const userRouter = require('./../router/user');
-
+const countryRouter = require('./../router/country');
+const statesRouter = require('./../router/states');
+const cityRouter = require('./../router/city');
 // console.log("enter")
  let { protocal, host, port, name,username,password } = config.app.db;
  let db= process.env.MONGODB_URL ||`mongodb+srv://admin:admin123@cluster0.qcrci.mongodb.net/schoolsms?retryWrites=true&w=majority`;
@@ -37,5 +39,7 @@ mongoose.connect(db, {
 	//locationdata
 
 server.use("/user", userRouter);
-
+server.use("/country", countryRouter);
+server.use("/states", statesRouter);
+server.use("/city", cityRouter);
 module.exports= server;

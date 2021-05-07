@@ -1,0 +1,93 @@
+const citySchema = require('./../model/city');
+const errorHandler = require('./../utils/error.handler');
+const cityJson = require('./../data/cities');
+
+class cityController {
+
+
+    async add(farm){
+		try{
+			let response = await citySchema.create(farm);
+			return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+    async addMany(){
+		try{
+			let response = await citySchema.insertMany(cityJson);
+			return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+	async fetch(){
+		try{
+			let response = await citySchema.find({});
+			let count=Object.keys(response).length;
+			return {
+				response: response,
+				count
+			};
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+
+	async fetchdata(id){
+		try{
+			let response = await citySchema.find({'_id':id});
+			return {
+				response: response,
+			};
+			
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+
+	async delete(id){
+		try{
+			let response = await citySchema.deleteOne({_id: id});
+			return {
+				status: "success",
+				response: response
+			};
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+
+	async update(id, body) {
+
+        try {
+            let response = await citySchema.update({_id: id}, body);
+            return { status: "success", msg:"country Updated successfully",result: response, message: "Updated Successfully" };
+
+        } catch (error) {
+            return { status: "error", error: error };
+        }
+
+    }
+
+	
+}
+
+       
+
+module.exports=new cityController();
