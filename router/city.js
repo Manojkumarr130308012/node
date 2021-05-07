@@ -7,7 +7,7 @@ router.post('/add', async (req, res) => {
 	res.send(response);
 })
 router.post('/addmany', async (req, res) => {
-	const response = await cityController.addMany(req.body);
+	const response = await cityController.addMany();
 	res.send(response);
 })
 router.get('/', async (req, res) => {
