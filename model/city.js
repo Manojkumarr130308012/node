@@ -7,7 +7,7 @@ const citySchema = new mongoose.Schema({
       name: {
         type: String
       },
-      state_id: {
+      state_cityid: {
         type: String
       }
 });
