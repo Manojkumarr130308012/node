@@ -30,5 +30,8 @@ router.put('/update', async (req, res) => {
 	const response = await statesController.update(req.query.id, req.body);
 	res.send(response);
 })
-
+router.put('/aggreation', async (req, res) => {
+	const response = await statesController.aggregation();
+	res.send(response);
+})
 module.exports = router;

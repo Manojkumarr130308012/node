@@ -84,7 +84,26 @@ class statesController {
         }
 
     }
-
+	async aggregation() {
+        try {
+           return  await statesSchema.aggregate([
+			   {
+				   $lookup:
+				   {
+					   from: "institutions",
+					   localField: "country_stateid",
+					   foreignField: "countryid",
+					   as: "stated"
+				   }
+			   }			 
+		  ]);
+        } catch (error) {
+            return {
+                status: "error",
+                error: errorHandler.parseMongoError(error)
+            };
+        }
+	}
 	
 }
 
