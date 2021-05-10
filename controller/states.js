@@ -90,7 +90,7 @@ class statesController {
 			   {
 				   $lookup:
 				   {
-					   from: "institutions",
+					   from: "states",
 					   localField: "country_stateid",
 					   foreignField: "countryid",
 					   as: "stated"
