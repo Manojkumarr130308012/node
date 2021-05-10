@@ -86,7 +86,7 @@ class statesController {
     }
 	async aggregation() {
         try {
-           return  await statesSchema.aggregate([
+			let response = await statesSchema.aggregate([
 			   {
 				   $lookup:
 				   {
@@ -97,6 +97,8 @@ class statesController {
 				   }
 			   }			 
 		  ]);
+		  return response;
+		  
         } catch (error) {
             return {
                 status: "error",
