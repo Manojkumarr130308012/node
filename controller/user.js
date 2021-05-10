@@ -21,11 +21,11 @@ class UserController {
     }
 
     async login(responce){
-        let username=responce.username;
+        let username=responce.phone;
         let password=responce.password;
         try{
             let user = await userSchema.findOne({
-                username: username,
+                phone: username,
                 password: password,
             });
 
