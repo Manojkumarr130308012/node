@@ -47,9 +47,8 @@ class CountryController {
 	async fetchdata(id){
 		try{
 			let response = await countrySchema.find({'_id':id});
-			return {
-				response: response,
-			};
+			return  response;
+			
 			
 		} catch(error){
 			return {
