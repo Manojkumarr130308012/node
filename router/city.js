@@ -27,7 +27,6 @@ router.put('/update', async (req, res) => {
 	res.send(response);
 })
 router.get('/aggreation', async (req, res) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
 	const response = await cityController.aggregation();
 	res.send(response);
 })
