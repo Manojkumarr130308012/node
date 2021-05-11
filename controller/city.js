@@ -20,11 +20,7 @@ class cityController {
 	async fetch(){
 		try{
 			let response = await citySchema.find({});
-			let count=Object.keys(response).length;
-			return {
-				response: response,
-				count
-			};
+		    return response;
 		} catch(error){
 			return {
 				status: "error",
