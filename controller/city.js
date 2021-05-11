@@ -20,6 +20,7 @@ class cityController {
 	async fetch(){
 		try{
 			let response = await citySchema.find({});
+			console.log("",""+response);
 		    return response;
 		} catch(error){
 			return {
