@@ -84,28 +84,28 @@ class cityController {
         }
 
     }
-	// async aggregation() {
-    //     try {
-	// 		let response = await citySchema.aggregate([
-	// 		   {
-	// 			   $lookup:
-	// 			   {
-	// 				   from: "states",
-	// 				   localField: "state_cityid",
-	// 				   foreignField: "stateid",
-	// 				   as: "cityd"
-	// 			   }
-	// 		   }			 
-	// 	  ]);
-	// 	  return response;
+	async aggregation() {
+        try {
+			let response = await citySchema.aggregate([
+			   {
+				   $lookup:
+				   {
+					   from: "states",
+					   localField: "state_cityid",
+					   foreignField: "stateid",
+					   as: "cityd"
+				   }
+			   }			 
+		  ]);
+		  return response;
 		  
-    //     } catch (error) {
-    //         return {
-    //             status: "error",
-    //             error: errorHandler.parseMongoError(error)
-    //         };
-    //     }
-	// }
+        } catch (error) {
+            return {
+                status: "error",
+                error: errorHandler.parseMongoError(error)
+            };
+        }
+	}
 	
 }
 
