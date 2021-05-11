@@ -8,7 +8,7 @@ const cityController = require('./../controller/city');
 // })
 
 router.get('/', async (req, res) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
+	// res.setHeader('Access-Control-Allow-Origin', '*');
 	const response = await cityController.fetch();
 	res.send(response);
 })
