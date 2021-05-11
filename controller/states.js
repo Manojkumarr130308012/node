@@ -46,9 +46,7 @@ class statesController {
 	async fetchdata(id){
 		try{
 			let response = await statesSchema.find({'_id':id});
-			return {
-				response: response,
-			};
+			return response;
 			
 		} catch(error){
 			return {
