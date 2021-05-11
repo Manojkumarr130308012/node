@@ -1,6 +1,6 @@
 const citySchema = require('./../model/city');
 const errorHandler = require('./../utils/error.handler');
-const cityJson = require('./../data/cities');
+
 
 class cityController {
 
@@ -16,17 +16,7 @@ class cityController {
 			};
 		}
 	}
-    async addMany(){
-		try{
-			let response = await citySchema.insertMany(cityJson);
-			return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
-		} catch(error){
-			return {
-				status: "error",
-				error: errorHandler.parseMongoError(error)
-			};
-		}
-	}
+  
 	async fetch(){
 		try{
 			let response = await citySchema.find({});
