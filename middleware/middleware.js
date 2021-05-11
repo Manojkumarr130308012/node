@@ -41,5 +41,5 @@ mongoose.connect(db, {
 server.use("/user", userRouter);
 server.use("/country", countryRouter);
 server.use("/states", statesRouter);
-server.use("/city", cityRouter);
+server.use("/citys", cityRouter);
 module.exports= server;
