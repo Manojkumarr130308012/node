@@ -86,7 +86,7 @@ class cityController {
     }
 	async aggregation() {
         try {
-			let response = await statesSchema.aggregate([
+			let response = await citySchema.aggregate([
 			   {
 				   $lookup:
 				   {
