@@ -1,27 +1,40 @@
 const citySchema = require('./../model/city');
 const errorHandler = require('./../utils/error.handler');
+const citiesJson = require('./../data/cities');
+
+class CityController {
 
 
-class cityController {
-
-
-    // async add(farm){
-	// 	try{
-	// 		let response = await citySchema.create(farm);
-	// 		return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
-	// 	} catch(error){
-	// 		return {
-	// 			status: "error",
-	// 			error: errorHandler.parseMongoError(error)
-	// 		};
-	// 	}
-	// }
-  
+    async add(farm){
+		try{
+			let response = await citySchema.create(farm);
+			return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
+    async addMany(){
+		try{
+			let response = await citySchema.insertMany(citiesJson);
+			return { status: "success",   msg:"city Added successfully", result: response, message: "Added Successfully" };
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
 	async fetch(){
 		try{
 			let response = await citySchema.find({});
-			console.log("",""+response);
-		    return response;
+			let count=Object.keys(response).length;
+			return {
+				response: response,
+				count
+			};
 		} catch(error){
 			return {
 				status: "error",
@@ -30,72 +43,70 @@ class cityController {
 		}
 	}
 
-	// async fetchdata(id){
-	// 	try{
-	// 		let response = await citySchema.find({'_id':id});
-	// 		return {
-	// 			response: response,
-	// 		};
+	async fetchdata(id){
+		try{
+			let response = await citySchema.find({'_id':id});
+			return response;
 			
-	// 	} catch(error){
-	// 		return {
-	// 			status: "error",
-	// 			error: errorHandler.parseMongoError(error)
-	// 		};
-	// 	}
-	// }
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
 
-	// async delete(id){
-	// 	try{
-	// 		let response = await citySchema.deleteOne({_id: id});
-	// 		return {
-	// 			status: "success",
-	// 			response: response
-	// 		};
-	// 	} catch(error){
-	// 		return {
-	// 			status: "error",
-	// 			error: errorHandler.parseMongoError(error)
-	// 		};
-	// 	}
-	// }
+	async delete(id){
+		try{
+			let response = await citySchema.deleteOne({_id: id});
+			return {
+				status: "success",
+				response: response
+			};
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
 
-	// async update(id, body) {
+	async update(id, body) {
 
-    //     try {
-    //         let response = await citySchema.update({_id: id}, body);
-    //         return { status: "success", msg:"country Updated successfully",result: response, message: "Updated Successfully" };
+        try {
+            let response = await citySchema.update({_id: id}, body);
+            return { status: "success", msg:"country Updated successfully",result: response, message: "Updated Successfully" };
 
-    //     } catch (error) {
-    //         return { status: "error", error: error };
-    //     }
+        } catch (error) {
+            return { status: "error", error: error };
+        }
 
-    // }
-	// async aggregation() {
-    //     try {
-	// 		let response = await citySchema.aggregate([
-	// 		   {
-	// 			   $lookup:
-	// 			   {
-	// 				   from:"states",
-	// 				   localField:"state_cityid",
-	// 				   foreignField:"stateid",
-	// 				   as: "stated"
-	// 			   }
-	// 		   }			 
-	// 	  ]);
-	// 	  return response;
+    }
+	async aggregation() {
+        try {
+			let response = await citySchema.aggregate([
+			   {
+				   $lookup:
+				   {
+					   from: "countries",
+					   localField: "country_stateid",
+					   foreignField: "countryid",
+					   as: "stated"
+				   }
+			   }			 
+		  ]);
+		  return response;
 		  
-    //     } catch (error) {
-    //         return {
-    //             status: "error",
-    //             error: errorHandler.parseMongoError(error)
-    //         };
-    //     }
-	// }
+        } catch (error) {
+            return {
+                status: "error",
+                error: errorHandler.parseMongoError(error)
+            };
+        }
+	}
 	
 }
 
        
 
-module.exports=new cityController();
+module.exports=new CityController();
