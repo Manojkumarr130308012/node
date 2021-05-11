@@ -55,6 +55,18 @@ class CountryController {
 		}
 	}
 
+
+	async fetchcountrydata(id){
+		try{
+			let response = await countrySchema.find({'country_stateid':id});
+			return  response;
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+	}
 	async delete(id){
 		try{
 			let response = await countrySchema.deleteOne({_id: id});
