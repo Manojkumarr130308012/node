@@ -32,10 +32,7 @@ class CountryController {
 		try{
 			let response = await countrySchema.find({});
 			let count=Object.keys(response).length;
-			return {
-				response: response,
-				count
-			};
+			return  response;
 		} catch(error){
 			return {
 				status: "error",
