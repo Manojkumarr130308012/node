@@ -88,10 +88,10 @@ class CityController {
 			   {
 				   $lookup:
 				   {
-					   from: "countries",
-					   localField: "country_stateid",
-					   foreignField: "countryid",
-					   as: "stated"
+					   from: "states",
+					   localField: "state_cityid",
+					   foreignField: "stateid",
+					   as: "cityd"
 				   }
 			   }			 
 		  ]);
