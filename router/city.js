@@ -31,7 +31,7 @@ router.put('/update', async (req, res) => {
 	res.send(response);
 })
 router.get('/aggreation', async (req, res) => {
-	const response = await cityController.aggregation();
+	const response = await cityController.aggregation(req.query.state_cityid);
 	res.send(response);
 })
 module.exports = router;
