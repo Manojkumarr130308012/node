@@ -88,7 +88,7 @@ class CityController {
 			let response = await citySchema.aggregate([
 				{
 					$match: {
-						state_cityid:""+id
+						state_cityid:"2"
 					}
 				},
 			   {
