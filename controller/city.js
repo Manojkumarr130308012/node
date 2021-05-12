@@ -85,6 +85,11 @@ class CityController {
 	async aggregation() {
         try {
 			let response = await citySchema.aggregate([
+				{
+					$match: {
+						state_cityid:"2"
+					}
+				},
 			   {
 				   $lookup:
 				   {
@@ -96,7 +101,7 @@ class CityController {
 			   }			 
 		  ]);
 
-		  
+
 		  return response;
 		  
         } catch (error) {
