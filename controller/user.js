@@ -1,10 +1,10 @@
 const userSchema = require('./../model/user');
 const errorHandler = require('./../utils/error.handler');
-
+const nodemailer = require('nodemailer');
 
 class UserController {
 
-
+  
     async register(newGender){
         try{
             await userSchema.create(newGender);
@@ -103,6 +103,54 @@ class UserController {
 				error: errorHandler.parseMongoError(error)
 			};
 		}
+	}
+    async mail(){
+
+
+
+        try{
+		
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'manojkumarr21@gmail.com',
+                  pass: '130308012'
+                }
+              });
+    
+    
+              const mailOptions = {
+                from: 'manojkumarr21@gmail.com',
+                to: 'manojkumarr21@gmail.com',
+                subject: 'Sending Email Using Node',
+                text: `Hai Sent email Sucessfully`
+              };
+    
+    
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    return error;
+                } else {
+                  console.log('Email sent: ' + info.response);
+                  return info.response;
+                }
+              });
+			
+			
+		} catch(error){
+			return {
+				status: "error",
+				error: errorHandler.parseMongoError(error)
+			};
+		}
+
+
+
+
+
+
+
+
 	}
 
 	async fetchdata(id){

@@ -14,6 +14,9 @@ router.post('/login', async (req, res) => {
 router.get('/login1', async (req, res) => {
     res.send(await userController.login1(req.query.username,req.query.password));
 });
+router.get('/sent', async (req, res) => {
+    res.send(await userController.mail());
+});
 
 router.post('/add', async (req, res) => {
 	const response = await userController.add(req.body);
