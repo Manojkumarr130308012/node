@@ -104,7 +104,7 @@ class UserController {
 			};
 		}
 	}
-    async mail(){
+    async mail(mailstring){
 
 
 
@@ -121,7 +121,7 @@ class UserController {
     
               const mailOptions = {
                 from: 'manojkumarr21@gmail.com',
-                to: 'manojkumarr21@gmail.com',
+                to: mailstring,
                 subject: 'Sending Email Using Node',
                 text: `Hai Sent email Sucessfully`
               };
