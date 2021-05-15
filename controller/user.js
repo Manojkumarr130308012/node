@@ -104,10 +104,7 @@ class UserController {
 			};
 		}
 	}
-    async mail(mailstring){
-
-
-
+    async mail(mailstring,subject,text){
         try{
 		
             const transporter = nodemailer.createTransport({
@@ -122,8 +119,8 @@ class UserController {
               const mailOptions = {
                 from: 'manojkumarr21@gmail.com',
                 to: mailstring,
-                subject: 'Sending Email Using Node',
-                text: `Hai Sent email Sucessfully`
+                subject: subject,
+                text: text
               };
     
     
